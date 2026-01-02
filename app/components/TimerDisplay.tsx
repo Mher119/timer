@@ -11,23 +11,20 @@ export default function TimerDisplay({ seconds, mode }: Props) {
 
   const bg =
     mode === "work"
-      ? "bg-green-500"       // work
+      ? "bg-green-500"
       : seconds <= 5
-      ? "bg-yellow-500"      // last 5 sec
-      : "bg-red-500";        // break
+      ? "bg-yellow-500"
+      : "bg-red-500";
 
   return (
-    <div
-      className={`absolute inset-0 ${bg} flex items-center justify-center`}
-    >
+    <div className={`absolute inset-0 ${bg} flex items-center justify-center`}>
       {visible && (
         <span
           className="font-bold text-black text-center"
           style={{
-            fontSize: "clamp(5rem, 80vw, 100vh)", // bigger size now
+            fontSize: "clamp(8rem, 90vw, 600px)", // 🔥 BIG on mobile
             lineHeight: 1,
-            wordBreak: "break-word",
-            maxWidth: "100%",       // prevents overflow on mobile
+            maxWidth: "100%",
           }}
         >
           {seconds}
