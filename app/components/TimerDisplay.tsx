@@ -22,7 +22,7 @@ export default function TimerDisplay({ seconds, mode }: Props) {
       {visible && (
         <span
           className="font-bold text-black"
-          style={{ fontSize: "min(25vw, 200px)" }} // responsive max font size
+          style={{ fontSize: "min(50vh, 500px)" }} // responsive max font size
         >
           {seconds}
         </span>
