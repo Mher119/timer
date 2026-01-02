@@ -9,22 +9,26 @@ export default function TimerDisplay({ seconds, mode }: Props) {
   const isBlinking = seconds > 0 && seconds <= 5;
   const visible = !isBlinking || Math.floor(seconds * 2) % 2 === 0;
 
+  // Full-screen background color
   const bg =
     mode === "work"
-      ? "bg-green-500"
+      ? "bg-green-500"       // work
       : seconds <= 5
-      ? "bg-yellow-500"
-      : "bg-red-500";
+      ? "bg-yellow-500"      // last 5 sec
+      : "bg-red-500";        // break
 
   return (
-    <div className={`flex-1 flex items-center justify-center w-full h-full ${bg}`}>
+    <div
+      className={`absolute inset-0 ${bg} flex items-center justify-center`}
+    >
       {visible && (
         <span
-          className="font-bold text-black"
+          className="font-bold text-black text-center"
           style={{
-            fontSize: "min(50vh, 500px)", // scales number independently
+            fontSize: "clamp(5rem, 80vw, 80vh)", // huge & responsive
             lineHeight: 1,
-            textAlign: "center",
+            wordBreak: "break-word",
+            maxWidth: "100%",       // prevents overflow on mobile
           }}
         >
           {seconds}
