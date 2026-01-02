@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import TimerDisplay from "./TimerDisplay";
 import TimerControls from "./TimerControls";
 
 type Mode = "work" | "break";
@@ -48,27 +47,52 @@ export default function Timer() {
 
   return (
     <div className="relative h-screen w-screen">
-      {/* Timer full-screen background */}
-      <TimerDisplay seconds={secondsLeft} mode={mode} />
+      {/* Full-screen background color */}
+      <div
+        className={`absolute top-0 left-0 w-full h-full ${
+          mode === "work"
+            ? "bg-green-500"
+            : secondsLeft <= 5
+            ? "bg-yellow-500"
+            : "bg-red-500"
+        }`}
+      ></div>
 
-      {/* Controls fixed at bottom */}
-      <div className="absolute bottom-0 left-0 w-full p-4 bg-black/10 backdrop-blur-sm">
-        <TimerControls
-          running={running}
-          setRunning={setRunning}
-          setWorkTime={setWorkTime}
-          setBreakTime={setBreakTime}
-          onReset={resetTimer}
-          secondsLeft={secondsLeft}
-          mode={mode}
-          workTime={workTime}
-          breakTime={breakTime}
-          setSecondsLeft={setSecondsLeft}
-          playSound={playSound}
-          setMode={setMode} // pass setMode to controls
-        />
+      {/* Timer number centered */}
+      <div className="relative z-10 flex flex-col h-screen">
+       <div className="flex-1 flex items-center justify-center px-4">
+  <span
+    className="font-bold text-black text-center"
+    style={{
+      // Ensures number scales but stays within screen width
+      fontSize: "clamp(3rem, 20vw, 50vh)",
+      lineHeight: 1,
+      wordBreak: "break-word",
+    }}
+  >
+    {secondsLeft}
+  </span>
+</div>
+
+
+        {/* Buttons at bottom with semi-transparent background */}
+        <div className="w-full p-4 bg-black/10 backdrop-blur-sm z-10">
+          <TimerControls
+            running={running}
+            setRunning={setRunning}
+            setWorkTime={setWorkTime}
+            setBreakTime={setBreakTime}
+            onReset={resetTimer}
+            secondsLeft={secondsLeft}
+            mode={mode}
+            workTime={workTime}
+            breakTime={breakTime}
+            setSecondsLeft={setSecondsLeft}
+            playSound={playSound}
+            setMode={setMode}
+          />
+        </div>
       </div>
     </div>
   );
 }
-
