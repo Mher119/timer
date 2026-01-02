@@ -9,7 +9,6 @@ export default function TimerDisplay({ seconds, mode }: Props) {
   const isBlinking = seconds > 0 && seconds <= 5;
   const visible = !isBlinking || Math.floor(seconds * 2) % 2 === 0;
 
-  // Full-screen background color
   const bg =
     mode === "work"
       ? "bg-green-500"       // work
@@ -25,7 +24,7 @@ export default function TimerDisplay({ seconds, mode }: Props) {
         <span
           className="font-bold text-black text-center"
           style={{
-            fontSize: "clamp(5rem, 80vw, 80vh)", // huge & responsive
+            fontSize: "clamp(5rem, 80vw, 70vh)", // bigger size now
             lineHeight: 1,
             wordBreak: "break-word",
             maxWidth: "100%",       // prevents overflow on mobile
