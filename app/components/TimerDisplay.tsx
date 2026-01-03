@@ -16,24 +16,30 @@ export default function TimerDisplay({ seconds, mode }: Props) {
       ? "bg-yellow-500"
       : "bg-red-500";
 
+      const offsetX =
+  seconds >= 100 ? "-1.5vw" :
+  seconds >= 10  ? "-0.8vw" :
+  "0";
+
+
   return (
-    <div className={`absolute inset-0 ${bg} flex items-center justify-center px-1.25`}>
-      {visible && (
-        <span
-          className="font-bold text-black text-center w-full"
-          style={{
-            fontSize: "clamp(7rem, 92vw, 600px)", // 🔽 slightly reduced vw
-            lineHeight: 0.95,
-            letterSpacing: "-0.05em",
-            transform: "translateY(-8vh)",
-            maxWidth: "100%",
-            overflow: "hidden",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {seconds}
-        </span>
-      )}
-    </div>
+   <div className={`absolute inset-0 ${bg} flex items-center justify-center px-1.25`}>
+  {visible && (
+    <span
+  className="font-bold text-black text-center tabular-nums"
+  style={{
+    fontSize: "clamp(6.5rem, 90vw, 600px)",
+    lineHeight: 0.95,
+    letterSpacing: "-0.05em",
+    transform: `translate(-0%, -8vh) translateX(${offsetX})`,
+    whiteSpace: "nowrap",
+  }}
+>
+  {seconds}
+</span>
+
+  )}
+</div>
+
   );
 }
