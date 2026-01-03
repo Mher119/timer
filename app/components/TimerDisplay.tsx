@@ -17,14 +17,17 @@ export default function TimerDisplay({ seconds, mode }: Props) {
       : "bg-red-500";
 
   return (
-    <div className={`absolute inset-0 ${bg} flex items-center justify-center`}>
+    <div className={`absolute inset-0 ${bg} flex items-center justify-center px-1.25`}>
       {visible && (
         <span
-          className="font-bold text-black text-center"
+          className="font-bold text-black text-center w-full"
           style={{
-            fontSize: "clamp(8rem, 90vw, 600px)", // 🔥 BIG on mobile
+            fontSize: "clamp(6rem, 85vw, 600px)", // 🔽 slightly reduced vw
             lineHeight: 1,
+            transform: "translateY(-8vh)",
             maxWidth: "100%",
+            overflow: "hidden",
+            whiteSpace: "nowrap",
           }}
         >
           {seconds}
