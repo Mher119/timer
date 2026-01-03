@@ -22,8 +22,9 @@ export default function TimerDisplay({ seconds, mode }: Props) {
         <span
           className="font-bold text-black text-center w-full"
           style={{
-            fontSize: "clamp(6rem, 85vw, 600px)", // 🔽 slightly reduced vw
-            lineHeight: 1,
+            fontSize: "clamp(7rem, 92vw, 600px)", // 🔽 slightly reduced vw
+            lineHeight: 0.95,
+            letterSpacing: "-0.05em",
             transform: "translateY(-8vh)",
             maxWidth: "100%",
             overflow: "hidden",
