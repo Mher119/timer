@@ -23,7 +23,7 @@ export default function TimerDisplay({ seconds, mode }: Props) {
 
   let fontSize = "clamp(6.5rem, 90vw, 600px)";
   if (seconds >= 100) {
-    fontSize = "clamp(5rem, 65vw, 400px)";
+    fontSize = "clamp(5rem, 62vw, 400px)";
   }
 
   return (
